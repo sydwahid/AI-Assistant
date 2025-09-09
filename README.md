@@ -8,8 +8,6 @@ With QuickGPT, users can **chat with AI, generate creative text, create stunning
 💳 With **Stripe payments**, users can purchase credits securely and instantly.  
 🌍 Deployed on **Vercel**, it’s fast, scalable, and accessible anywhere.  
 
----
-
 <h1 align="center">
   <a href="https://quick-gpt-hazel-ten.vercel.app/"><strong> ➥ Live Demo</strong></a>
 </h1>
