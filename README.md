@@ -84,8 +84,7 @@ cd QuickGPT
 cd client && npm install
 cd ../server && npm install
 
-
-# 4. Run development servers
+# 3. Run development servers
 # In /server
 npm run dev
 # In /client
