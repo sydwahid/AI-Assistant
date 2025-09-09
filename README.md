@@ -8,15 +8,11 @@ With QuickGPT, users can **chat with AI, generate creative text, create stunning
 💳 With **Stripe payments**, users can purchase credits securely and instantly.  
 🌍 Deployed on **Vercel**, it’s fast, scalable, and accessible anywhere.  
 
-This repository contains a **production-ready full-stack application** with **MongoDB, Express.js, React.js, and Node.js**, offering a seamless developer and user experience.
-
 ---
 
 <h1 align="center">
   <a href="https://quick-gpt-hazel-ten.vercel.app/"><strong> ➥ Live Demo</strong></a>
 </h1>
-
----
 
 ## 📸 Screenshots  
 
