@@ -25,6 +25,7 @@ const App = () => {
       <Toaster />
       {!isMenuOpen && <img src={assets.menu_icon} className='absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden not-dark:invert' onClick={() => setIsMenuOpen(true)} />}
 
+      {/* Jab user login hoga tab ye sab show hoga */}
       {user ? (
         <div className='dark:bg-gradient-to-b from-[#242124] to-[#000000] dark:text-white'>
           <div className="flex h-screen w-screen">
@@ -36,6 +37,7 @@ const App = () => {
             </Routes>
           </div>
         </div>
+        // agar login nhi huwa to firr se login page open hoga
       ) : (
         <div className='bg-gradient-to-b from-[#242124] to-[#000000] flex items-center justify-center h-screen w-screen'>
           <Login />

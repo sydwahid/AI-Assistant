@@ -18,16 +18,21 @@ export const textMessageController = async (req, res) => {
         const { chatId, prompt } = req.body
 
         const chat = await Chat.findOne({ userId, _id: chatId })
+        if (!chat) {
+            return res.json({ success: false, message: "Chat not found" })
+        }
         chat.messages.push({ role: "user", content: prompt, timestamp: Date.now(), isImage: false })
+
+        // Build conversation history for context, limit to last 10 messages to reduce token usage
+        const MAX_CONTEXT_MESSAGES = 10;
+        const conversationHistory = chat.messages
+            .filter(m => !m.isImage)
+            .slice(-MAX_CONTEXT_MESSAGES)
+            .map(m => ({ role: m.role, content: m.content }))
 
         const { choices } = await openai.chat.completions.create({
             model: "gemini-2.0-flash",
-            messages: [
-                {
-                    role: "user",
-                    content: prompt,
-                },
-            ],
+            messages: conversationHistory,
         });
 
         const reply = { ...choices[0].message, timestamp: Date.now(), isImage: false }
@@ -40,6 +45,10 @@ export const textMessageController = async (req, res) => {
 
 
     } catch (error) {
+        const status = error?.status || error?.response?.status
+        if (status === 429) {
+            return res.json({ success: false, message: "AI rate limit reached. Please wait a moment and try again." })
+        }
         res.json({ success: false, message: error.message })
     }
 }
@@ -55,6 +64,9 @@ export const imageMessageController = async (req, res) => {
         const { prompt, chatId, isPublished } = req.body
         // Find chat
         const chat = await Chat.findOne({ userId, _id: chatId })
+        if (!chat) {
+            return res.json({ success: false, message: "Chat not found" })
+        }
 
         //push user message
         chat.messages.push({

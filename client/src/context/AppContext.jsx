@@ -21,24 +21,25 @@ export const AppContextProvider = ({ children }) => {
 
     const fetchUser = async () => {
         try {
-            const { data } = await axios.get('/api/user/data', {headers: {Authorization: token}})
-            if(data.success){
+            const { data } = await axios.get('/api/user/data', { headers: { Authorization: token } })
+            if (data.success) {
                 setUser(data.user)
-            }else{
+            } else {
                 toast.error(data.message)
             }
         } catch (error) {
             toast.error(error.message)
-        }finally{
+        } finally {
             setLoadingUser(false)
         }
     }
+    //new chat funt
 
     const createNewChat = async () => {
         try {
-            if(!user) return toast('Login to create a new chat')
-                navigate('/')
-            await axios.get('/api/chat/create', {headers: {Authorization: token}})
+            if (!user) return toast('Login to create a new chat')
+            navigate('/')
+            await axios.get('/api/chat/create', { headers: { Authorization: token } })
             await fetchUsersChats()
         } catch (error) {
             toast.error(error.message)
@@ -47,17 +48,17 @@ export const AppContextProvider = ({ children }) => {
 
     const fetchUsersChats = async () => {
         try {
-            const {data} = await axios.get('/api/chat/get', {headers: {Authorization: token}})
-            if(data.success){
+            const { data } = await axios.get('/api/chat/get', { headers: { Authorization: token } })
+            if (data.success) {
                 setChats(data.chats)
                 //If user has no chats create one
-                if(data.chats.length === 0){
+                if (data.chats.length === 0) {
                     await createNewChat();
                     return fetchUsersChats()
-                }else{
+                } else {
                     setSelectedChat(data.chats[0])
                 }
-            }else{
+            } else {
                 toast.error(data.message)
             }
         } catch (error) {
@@ -86,9 +87,9 @@ export const AppContextProvider = ({ children }) => {
     }, [user])
 
     useEffect(() => {
-        if(token){
+        if (token) {
             fetchUser()
-        }else{
+        } else {
             setUser(null)
             setLoadingUser(false)
         }

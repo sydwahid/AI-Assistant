@@ -19,15 +19,16 @@ const ChatBox = () => {
   const [isPublished, setIsPublished] = useState(false)
 
   const onSubmit = async(e) => {
+    e.preventDefault();
+    if(!user) return toast('Login to send message')
+    if(!selectedChat) return toast.error('No chat selected')
+    const promptCopy = prompt
     try {
-      e.preventDefault();
-      if(!user) return toast('Login to send message')
-        setLoading(true)
-      const promptCopy = prompt
+      setLoading(true)
       setPrompt('')
-      setMessages(prev => [...prev, {role: 'user', content: prompt, timestamp: Date.now(), isImage: false}])
+      setMessages(prev => [...prev, {role: 'user', content: promptCopy, timestamp: Date.now(), isImage: false}])
 
-      const {data} = await axios.post(`/api/message/${mode}`, {chatId: selectedChat._id, prompt, isPublished}, {headers: {Authorization: token}})
+      const {data} = await axios.post(`/api/message/${mode}`, {chatId: selectedChat._id, prompt: promptCopy, isPublished}, {headers: {Authorization: token}})
 
       if(data.success){
         setMessages(prev => [...prev, data.reply])
@@ -43,8 +44,8 @@ const ChatBox = () => {
       }
     } catch (error) {
       toast.error(error.message)
+      setPrompt(promptCopy)
     }finally{
-      setPrompt('')
       setLoading(false)
     }
   }
