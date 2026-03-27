@@ -21,32 +21,32 @@ const App = () => {
   if (pathname === '/loading' || loadingUser) return <Loading />
 
   return (
-    <>
+    <div className="app-bg min-h-screen text-white transition-colors duration-300">
       <Toaster />
-      {!isMenuOpen && <img src={assets.menu_icon} className='absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden not-dark:invert' onClick={() => setIsMenuOpen(true)} />}
+      {!isMenuOpen && (
+        <img
+          src={assets.menu_icon}
+          className="absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden invert z-50"
+          onClick={() => setIsMenuOpen(true)}
+        />
+      )}
 
-      {/* Jab user login hoga tab ye sab show hoga */}
       {user ? (
-        <div className='bg-gradient-to-br from-gray-50 to-gray-200 dark:from-slate-900 dark:to-slate-800 text-gray-800 dark:text-gray-100 min-h-screen transition-colors duration-300'>
-          <div className="flex h-screen w-screen">
-            <Sidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-            <Routes>
-              <Route path="/" element={<ChatBox isMenuOpen={isMenuOpen} />} />
-              <Route path="/credits" element={<Credits />} />
-              <Route path="/community" element={<Community />} />
-            </Routes>
-          </div>
+        <div className="flex h-screen w-screen">
+          <Sidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          <Routes>
+            <Route path="/" element={<ChatBox isMenuOpen={isMenuOpen} />} />
+            <Route path="/credits" element={<Credits />} />
+            <Route path="/community" element={<Community />} />
+          </Routes>
         </div>
-        // agar login nhi huwa to firr se login page open hoga
       ) : (
-        <div className='bg-gradient-to-br from-gray-50 to-gray-200 dark:from-slate-900 dark:to-slate-800 text-gray-800 dark:text-gray-100 flex items-center justify-center h-screen w-screen transition-colors duration-300'>
+        <div className="flex items-center justify-center h-screen w-screen">
           <Login />
         </div>
       )}
-
-
-    </>
-  );
+    </div>
+  )
 }
 
 export default App

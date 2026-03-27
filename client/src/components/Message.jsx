@@ -14,28 +14,28 @@ const Message = ({ message }) => {
     <div>
       {message.role === "user" ? (
         <div className="flex items-start justify-end my-4 gap-2">
-          <div className="flex flex-col gap-2 p-2 px-4 bg-white dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-md max-w-2xl shadow-md hover:shadow-lg transition-all">
-            <p className="text-sm text-gray-800 dark:text-gray-200">{message.content}</p>
-            <span className="text-xs text-gray-400 dark:text-slate-400">
+          <div className="glass-card flex flex-col gap-2 p-3 px-4 rounded-2xl max-w-2xl">
+            <p className="text-sm glass-text">{message.content}</p>
+            <span className="text-xs glass-text-muted">
               {moment(message.timestamp).fromNow()}
             </span>
           </div>
           <img src={assets.user_icon} alt="" className="w-8 rounded-full" />
         </div>
       ) : (
-        <div className="inline-flex flex-col gap-2 p-2 px-4 max-w-2xl bg-indigo-50 dark:bg-slate-800/80 border-2 border-indigo-200 dark:border-slate-600 rounded-md my-4 shadow-md hover:shadow-lg transition-all">
+        <div className="inline-flex flex-col gap-2 p-3 px-4 max-w-2xl glass-card rounded-2xl my-4" style={{ background: 'rgba(139,92,246,0.07)' }}>
           {message.isImage ? (
             <img
               src={message.content}
               alt=""
-              className="w-full max-w-md mt-2 rounded-md"
+              className="w-full max-w-md mt-2 rounded-xl"
             />
           ) : (
-            <div className="text-sm text-gray-800 dark:text-gray-200 reset-tw">
+            <div className="text-sm glass-text reset-tw">
               <Markdown>{message.content}</Markdown>
             </div>
           )}
-          <span className="text-xs text-gray-400 dark:text-slate-400">
+          <span className="text-xs glass-text-muted">
             {moment(message.timestamp).fromNow()}
           </span>
         </div>
@@ -44,4 +44,4 @@ const Message = ({ message }) => {
   );
 }
 
-export default Message
+export default Message

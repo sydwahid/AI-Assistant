@@ -80,34 +80,41 @@ const ChatBox = ({ isMenuOpen }) => {
 
         {/* Three dots loading  */}
         {loading && (
-          <div className="loader flex  items-center gap-1.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-white animate-bounce"></div>
-            <div className="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-white animate-bounce"></div>
-            <div className="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-white animate-bounce"></div>
+          <div className="loader flex items-center gap-1.5 px-2 py-1">
+            <div className="w-1.5 h-1.5 rounded-full glass-text-muted animate-bounce" style={{background:'currentColor'}}></div>
+            <div className="w-1.5 h-1.5 rounded-full glass-text-muted animate-bounce" style={{background:'currentColor'}}></div>
+            <div className="w-1.5 h-1.5 rounded-full glass-text-muted animate-bounce" style={{background:'currentColor'}}></div>
           </div>
         )}
       </div>
 
       {mode === 'image' && (
-        <label className='inline-flex items-center gap-2 mb-3 text-sm mx-auto'>
+        <label className='inline-flex items-center gap-2 mb-3 text-sm mx-auto glass-text-muted'>
           <p className='text-xs'>Publish Generated Image to Community</p>
-        <input type='checkbox' className='cursor-pointer' checked={isPublished} onChange={(e)=>setIsPublished(e.target.checked)}/>
+          <input type='checkbox' className='cursor-pointer' checked={isPublished} onChange={(e)=>setIsPublished(e.target.checked)}/>
         </label>
       )}
 
       {/* Prompt input Box  */}
-      <form onSubmit={onSubmit} className='bg-white dark:bg-slate-800 border-2 border-gray-300 dark:border-slate-600 shadow-md hover:shadow-lg transition-shadow rounded-full w-full max-w-2xl p-3 pl-4 mx-auto flex gap-4 items-center'>
-        <select onChange={(e)=>setMode(e.target.value)} value={mode} className="text-sm pl-3 pr-2 outline-none bg-transparent">
-          <option className='dark:bg-slate-800' value="text">Text</option>
-          <option className='dark:bg-slate-800' value="image">Image</option>
+      <form onSubmit={onSubmit} className='glass-input rounded-2xl w-full max-w-2xl p-3 pl-4 mx-auto flex gap-4 items-center'>
+        <select onChange={(e)=>setMode(e.target.value)} value={mode} className="text-sm pl-3 pr-2 outline-none bg-transparent glass-text">
+          <option className='bg-slate-800 text-white' value="text">Text</option>
+          <option className='bg-slate-800 text-white' value="image">Image</option>
         </select>
-        <input onChange={(e)=>setPrompt(e.target.value)} value={prompt} type='text' placeholder='Type your prompt here...' className='flex-1 w-full text-sm outline-none' required/>
+        <input
+          onChange={(e)=>setPrompt(e.target.value)}
+          value={prompt}
+          type='text'
+          placeholder='Type your prompt here...'
+          className='flex-1 w-full text-sm outline-none bg-transparent glass-text placeholder:opacity-90 placeholder:font-semibold'
+          required
+        />
         <button disabled={loading}>
-        <img src={loading ? assets.stop_icon : assets.send_icon} alt="" />
+          <img src={loading ? assets.stop_icon : assets.send_icon} alt="" className="dark:invert not-dark:opacity-50 hover:opacity-80 transition-opacity" />
         </button>
       </form>
     </div>
   );
 }
 
-export default ChatBox
+export default ChatBox

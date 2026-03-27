@@ -12,11 +12,112 @@
     --color-primary: #E6CCFF;
 }
 
+/* ── App background gradient ─────────────────────────────────── */
+.app-bg {
+    /* Light mode: soft sky → lavender gradient */
+    background: linear-gradient(
+        135deg,
+        #dde8ff 0%,
+        #c8d8ff 20%,
+        #d8cbff 40%,
+        #ead5ff 60%,
+        #f3e8ff 80%,
+        #e4eeff 100%
+    );
+    background-attachment: fixed;
+}
+
+/* Dark mode: deep indigo/violet */
+.dark .app-bg {
+    background: linear-gradient(
+        135deg,
+        #0f0c29 0%,
+        #1a1040 20%,
+        #1e1060 40%,
+        #2d1b6e 55%,
+        #1e1060 70%,
+        #0f0c29 100%
+    );
+    background-attachment: fixed;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
 
-/* Auto-fading scrollbar for sidebar chat list */
+/* ── Glass Utilities — Light Mode (default) ──────────────────── */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border-right: 1.5px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 4px 0 32px rgba(120, 80, 200, 0.1), inset 1px 0 0 rgba(255,255,255,0.9);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.48);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(180, 150, 255, 0.4);
+    box-shadow: 0 2px 16px rgba(100, 80, 200, 0.1);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 24px rgba(100, 80, 200, 0.18);
+}
+
+.glass-input {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1.5px solid rgba(180, 150, 255, 0.45);
+    box-shadow: 0 4px 24px rgba(100, 80, 200, 0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.glass-input:focus-within {
+    border-color: rgba(139, 92, 246, 0.75);
+    box-shadow: 0 4px 24px rgba(100, 80, 200, 0.15), 0 0 0 3px rgba(139, 92, 246, 0.14), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* ── Glass Utilities — Dark Mode ─────────────────────────────── */
+.dark .glass-panel {
+    background: rgba(15, 10, 30, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 4px 0 32px rgba(0, 0, 0, 0.4), inset 1px 0 0 rgba(255,255,255,0.05);
+}
+
+.dark .glass-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+.dark .glass-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.dark .glass-input {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.dark .glass-input:focus-within {
+    border-color: rgba(139, 92, 246, 0.65);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35), 0 0 0 3px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* ── Text colour helpers ─────────────────────────────────────── */
+.glass-text { color: rgba(45, 25, 90, 0.9); }
+.glass-text-muted { color: rgba(90, 70, 140, 0.6); }
+.dark .glass-text { color: rgba(240, 235, 255, 0.92); }
+.dark .glass-text-muted { color: rgba(210, 200, 255, 0.45); }
+
+/* ── Auto-fading scrollbar for sidebar chat list ─────────────── */
 .chat-scroll {
     overflow-y: auto;
     scrollbar-width: thin;
@@ -26,7 +127,7 @@
 
 .chat-scroll:hover,
 .chat-scroll:focus-within {
-    scrollbar-color: rgba(100, 116, 139, 0.5) transparent;
+    scrollbar-color: rgba(140, 100, 220, 0.35) transparent;
 }
 
 .chat-scroll::-webkit-scrollbar {
@@ -46,13 +147,18 @@
 
 .chat-scroll:hover::-webkit-scrollbar-thumb,
 .chat-scroll:focus-within::-webkit-scrollbar-thumb {
-    background: rgba(100, 116, 139, 0.45);
+    background: rgba(140, 100, 220, 0.3);
 }
 
-/* Dark mode variant */
 .dark .chat-scroll:hover::-webkit-scrollbar-thumb,
 .dark .chat-scroll:focus-within::-webkit-scrollbar-thumb {
-    background: rgba(203, 213, 225, 0.25);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Shimmer for glass sidebar border ────────────────────────── */
+@keyframes glass-shimmer {
+    0%, 100% { opacity: 0.7; }
+    50%       { opacity: 1; }
 }
 
 .reset-tw :not(pre):not(code) {

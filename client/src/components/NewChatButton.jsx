@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { useAppContext } from '../context/AppContext'
 
 const SPIKE_COUNT = 200
 const BASE_LEN    = 14   // px at rest
@@ -7,6 +8,8 @@ const SIGMA       = 14   // angular degrees — tighter = more localised pull
 const LERP        = 0.14 // 0..1: smaller = smoother/slower spring
 
 export default function JarvisOrb({ isMenuOpen }) {
+  const { theme } = useAppContext()
+  const dark = theme === 'dark'
   const svgRef       = useRef(null)
   const linesRef     = useRef([])
   const extensionsRef = useRef(new Float32Array(SPIKE_COUNT))   // current lengths
@@ -113,11 +116,11 @@ export default function JarvisOrb({ isMenuOpen }) {
         className="relative flex items-center justify-center pointer-events-auto"
       >
         {/* Ambient glow */}
-        <div className="absolute w-52 h-52 rounded-full bg-blue-500/10 blur-3xl animate-pulse" />
+        <div className={`absolute w-52 h-52 rounded-full blur-3xl animate-pulse ${dark ? 'bg-blue-500/10' : 'bg-sky-400/20'}`} />
 
         {/* Heartbeat rings */}
-        <span className="absolute w-36 h-36 rounded-full border border-cyan-400/20 animate-ping" style={{ animationDuration: '2.2s' }} />
-        <span className="absolute w-48 h-48 rounded-full border border-blue-400/10 animate-ping" style={{ animationDuration: '3.1s' }} />
+        <span className={`absolute w-36 h-36 rounded-full border animate-ping ${dark ? 'border-cyan-400/20' : 'border-sky-400/35'}`} style={{ animationDuration: '2.2s' }} />
+        <span className={`absolute w-48 h-48 rounded-full border animate-ping ${dark ? 'border-blue-400/10' : 'border-cyan-400/20'}`} style={{ animationDuration: '3.1s' }} />
 
         {/* Spiky SVG ring */}
         <svg
@@ -130,13 +133,13 @@ export default function JarvisOrb({ isMenuOpen }) {
           <defs>
             {/* Spikes — uniform single color */}
             <linearGradient id="spikeGrad" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse">
-              <stop offset="0%"   stopColor="#a5b4fc" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#a5b4fc" stopOpacity="0.9" />
+              <stop offset="0%"   stopColor={dark ? '#a5b4fc' : '#38bdf8'} stopOpacity="0.5" />
+              <stop offset="100%" stopColor={dark ? '#a5b4fc' : '#7dd3fc'} stopOpacity="0.9" />
             </linearGradient>
             {/* Dashed orbit ring */}
             <linearGradient id="ringGrad" x1="0" y1="-1" x2="0" y2="1">
-              <stop offset="0%"   stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#818cf8" />
+              <stop offset="0%"   stopColor={dark ? '#38bdf8' : '#0ea5e9'} />
+              <stop offset="100%" stopColor={dark ? '#818cf8' : '#22d3ee'} />
             </linearGradient>
           </defs>
 
@@ -146,28 +149,32 @@ export default function JarvisOrb({ isMenuOpen }) {
           {spikeLines}
         </svg>
 
-        {/* Core orb — compact dark gradient + wavy morph */}
+        {/* Core orb */}
         <div
-          className="orb-wave relative z-10 w-16 h-16 rounded-full flex items-center justify-center
-            shadow-[0_0_24px_6px_rgba(99,102,241,0.4),inset_0_1px_0_rgba(255,255,255,0.15)]"
+          className="orb-wave relative z-10 w-16 h-16 rounded-full flex items-center justify-center"
           style={{
-            background: 'radial-gradient(circle at 35% 30%, #312e81 0%, #1e1b4b 50%, #0f0a1e 100%)',
+            background: dark
+              ? 'radial-gradient(circle at 35% 30%, #312e81 0%, #1e1b4b 50%, #0f0a1e 100%)'
+              : 'radial-gradient(circle at 35% 30%, #38bdf8 0%, #0ea5e9 45%, #0284c7 100%)',
+            boxShadow: dark
+              ? '0 0 24px 6px rgba(99,102,241,0.4), inset 0 1px 0 rgba(255,255,255,0.15)'
+              : '0 0 24px 8px rgba(14,165,233,0.45), inset 0 1px 0 rgba(255,255,255,0.35)',
           }}
         >
           {/* Subtle inner rings */}
-          <div className="absolute w-12 h-12 rounded-full border border-indigo-400/20" />
-          <div className="absolute w-7  h-7  rounded-full border border-indigo-300/15" />
+          <div className={`absolute w-12 h-12 rounded-full border ${dark ? 'border-indigo-400/20' : 'border-sky-200/50'}`} />
+          <div className={`absolute w-7 h-7 rounded-full border ${dark ? 'border-indigo-300/15' : 'border-white/40'}`} />
           {/* Center glowing dot */}
-          <div className="relative w-2 h-2 rounded-full bg-indigo-300 shadow-[0_0_8px_4px_rgba(165,180,252,0.6)]" />
+          <div className={`relative w-2 h-2 rounded-full ${dark ? 'bg-indigo-300 shadow-[0_0_8px_4px_rgba(165,180,252,0.6)]' : 'bg-white shadow-[0_0_8px_4px_rgba(186,230,253,0.8)]'}`} />
         </div>
       </div>
 
       {/* Text */}
       <div className="text-center">
-        <p className="text-4xl sm:text-5xl font-light text-gray-400 dark:text-gray-300">
+        <p className={`text-4xl sm:text-5xl font-light ${dark ? 'text-gray-300' : 'text-slate-500'}`}>
           Ask me anything.
         </p>
-        <p className="mt-2 text-sm text-cyan-400/60 tracking-widest uppercase">
+        <p className={`mt-2 text-sm tracking-widest uppercase ${dark ? 'text-cyan-400/60' : 'text-sky-500/70'}`}>
           I'm listening...
         </p>
       </div>

@@ -14,7 +14,6 @@ const Login = () => {
         e.preventDefault();
         const url = state === "login" ? '/api/user/login' : '/api/user/register'
 
-
         try {
             const { data } = await axios.post(url, { name, email, password })
             if (data.success) {
@@ -28,77 +27,81 @@ const Login = () => {
         }
     }
 
-
     return (
         <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] text-gray-500 dark:text-gray-300 rounded-2xl shadow-2xl border-2 border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 transition-all hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+            className="glass-input flex flex-col gap-5 m-auto items-start p-8 py-12 w-80 sm:w-[370px] rounded-3xl shadow-2xl"
         >
-            <p className="text-2xl font-medium m-auto dark:text-white">
-                <span className="text-indigo-600 dark:text-indigo-400">User</span>{" "}
+            <p className="text-2xl font-semibold m-auto glass-text">
+                <span className="text-indigo-500 dark:text-indigo-400">User</span>{" "}
                 {state === "login" ? "Login" : "Sign Up"}
             </p>
+
             {state === "register" && (
                 <div className="w-full">
-                    <p>Name</p>
+                    <p className="text-sm mb-1 glass-text-muted">Name</p>
                     <input
                         onChange={(e) => setName(e.target.value)}
                         value={name}
-                        placeholder="type here"
-                        className="border border-gray-200 dark:border-slate-600 dark:bg-slate-700 text-gray-800 dark:text-white rounded w-full p-2 mt-1 outline-indigo-600 dark:outline-indigo-500"
+                        placeholder="Your name"
+                        className="glass-input rounded-xl w-full p-2.5 text-sm glass-text placeholder:opacity-90 placeholder:font-semibold outline-none"
                         type="text"
                         required
                     />
                 </div>
             )}
-            <div className="w-full ">
-                <p>Email</p>
+
+            <div className="w-full">
+                <p className="text-sm mb-1 glass-text-muted">Email</p>
                 <input
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
-                    placeholder="type here"
-                    className="border border-gray-200 dark:border-slate-600 dark:bg-slate-700 text-gray-800 dark:text-white rounded w-full p-2 mt-1 outline-indigo-600 dark:outline-indigo-500"
+                    placeholder="you@example.com"
+                    className="glass-input rounded-xl w-full p-2.5 text-sm glass-text placeholder:opacity-40 outline-none"
                     type="email"
                     required
                 />
             </div>
-            <div className="w-full ">
-                <p>Password</p>
+
+            <div className="w-full">
+                <p className="text-sm mb-1 glass-text-muted">Password</p>
                 <input
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
-                    placeholder="type here"
-                    className="border border-gray-200 dark:border-slate-600 dark:bg-slate-700 text-gray-800 dark:text-white rounded w-full p-2 mt-1 outline-indigo-600 dark:outline-indigo-500"
+                    placeholder="••••••••"
+                    className="glass-input rounded-xl w-full p-2.5 text-sm glass-text placeholder:opacity-40 outline-none"
                     type="password"
                     required
                 />
             </div>
+
             {state === "register" ? (
-                <p>
+                <p className="text-sm glass-text-muted">
                     Already have account?{" "}
                     <span
                         onClick={() => setState("login")}
-                        className="text-indigo-600 dark:text-indigo-400 font-medium cursor-pointer hover:underline"
+                        className="text-indigo-500 dark:text-indigo-400 font-medium cursor-pointer hover:underline"
                     >
                         click here
                     </span>
                 </p>
             ) : (
-                <p>
+                <p className="text-sm glass-text-muted">
                     Create an account?{" "}
                     <span
                         onClick={() => setState("register")}
-                        className="text-indigo-600 dark:text-indigo-400 font-medium cursor-pointer hover:underline"
+                        className="text-indigo-500 dark:text-indigo-400 font-medium cursor-pointer hover:underline"
                     >
                         click here
                     </span>
                 </p>
             )}
-            <button type='submit' className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 shadow flex justify-center items-center transition-all text-white w-full py-2 rounded-md cursor-pointer">
+
+            <button type='submit' className="bg-gradient-to-r from-violet-500 to-indigo-600 hover:from-violet-600 hover:to-indigo-700 active:scale-95 shadow-[0_4px_20px_rgba(139,92,246,0.4)] flex justify-center items-center transition-all text-white w-full py-2.5 rounded-xl cursor-pointer font-medium tracking-wide">
                 {state === "register" ? "Create Account" : "Login"}
             </button>
         </form>
     );
 }
 
-export default Login
+export default Login
