@@ -85,7 +85,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
               </div>
               <img
                 src={assets.bin_icon}
-                className="hidden group-hover:block w-4 cursor-pointer not-dark:invert not-dark:opacity-60 dark:invert dark:opacity-70 hover:opacity-100 self-center"
+                className="opacity-0 group-hover:opacity-70 hover:!opacity-100 pointer-events-none group-hover:pointer-events-auto w-4 cursor-pointer not-dark:invert dark:invert self-center transition-opacity duration-150 flex-shrink-0"
                 alt="delete"
                 onClick={(e) => {
                   e.stopPropagation()
