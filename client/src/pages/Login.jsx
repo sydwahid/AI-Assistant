@@ -32,10 +32,10 @@ const Login = () => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] text-gray-500 rounded-lg shadow-xl border border-gray-200 bg-white"
+            className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] text-gray-500 dark:text-gray-300 rounded-2xl shadow-2xl border-2 border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 transition-all hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
         >
-            <p className="text-2xl font-medium m-auto">
-                <span className="text-indigo-700">User</span>{" "}
+            <p className="text-2xl font-medium m-auto dark:text-white">
+                <span className="text-indigo-600 dark:text-indigo-400">User</span>{" "}
                 {state === "login" ? "Login" : "Sign Up"}
             </p>
             {state === "register" && (
@@ -45,7 +45,7 @@ const Login = () => {
                         onChange={(e) => setName(e.target.value)}
                         value={name}
                         placeholder="type here"
-                        className="border border-gray-200 rounded w-full p-2 mt-1 outline-purple-700"
+                        className="border border-gray-200 dark:border-slate-600 dark:bg-slate-700 text-gray-800 dark:text-white rounded w-full p-2 mt-1 outline-indigo-600 dark:outline-indigo-500"
                         type="text"
                         required
                     />
@@ -57,7 +57,7 @@ const Login = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     placeholder="type here"
-                    className="border border-gray-200 rounded w-full p-2 mt-1 outline-purple-700"
+                    className="border border-gray-200 dark:border-slate-600 dark:bg-slate-700 text-gray-800 dark:text-white rounded w-full p-2 mt-1 outline-indigo-600 dark:outline-indigo-500"
                     type="email"
                     required
                 />
@@ -68,7 +68,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
                     placeholder="type here"
-                    className="border border-gray-200 rounded w-full p-2 mt-1 outline-purple-700"
+                    className="border border-gray-200 dark:border-slate-600 dark:bg-slate-700 text-gray-800 dark:text-white rounded w-full p-2 mt-1 outline-indigo-600 dark:outline-indigo-500"
                     type="password"
                     required
                 />
@@ -78,7 +78,7 @@ const Login = () => {
                     Already have account?{" "}
                     <span
                         onClick={() => setState("login")}
-                        className="text-purple-700 cursor-pointer"
+                        className="text-indigo-600 dark:text-indigo-400 font-medium cursor-pointer hover:underline"
                     >
                         click here
                     </span>
@@ -88,13 +88,13 @@ const Login = () => {
                     Create an account?{" "}
                     <span
                         onClick={() => setState("register")}
-                        className="text-purple-700 cursor-pointer"
+                        className="text-indigo-600 dark:text-indigo-400 font-medium cursor-pointer hover:underline"
                     >
                         click here
                     </span>
                 </p>
             )}
-            <button type='submit' className="bg-purple-700 hover:bg-purple-800 transition-all text-white w-full py-2 rounded-md cursor-pointer">
+            <button type='submit' className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 shadow flex justify-center items-center transition-all text-white w-full py-2 rounded-md cursor-pointer">
                 {state === "register" ? "Create Account" : "Login"}
             </button>
         </form>

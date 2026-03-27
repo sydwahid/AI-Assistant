@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { dummyPlans } from '../assets/assets'
 import Loading from './Loading'
 import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
@@ -53,7 +52,7 @@ const Credits = () => {
         
         <div className='flex flex-wrap justify-center gap-8'>
             {plans.map((plan)=>(
-                <div key={plan._id} className={`border border-gray-200 dark:border-purple-700 rounded-lg shadow hover:shadow-lg transition-shadow p-6 min-w-[300px] flex flex-col ${plan._id === "pro" ? "bg-purple-50 dark:bg-purple-900" : "bg-white dark:bg-transparent"}`}>
+                <div key={plan._id} className={`border-2 rounded-xl shadow-md hover:shadow-xl transition-all p-6 min-w-[300px] flex flex-col ${plan._id === "pro" ? "bg-blue-50 dark:bg-slate-700 border-blue-400 dark:border-blue-500 scale-105" : "bg-white dark:bg-slate-800 border-gray-300 dark:border-slate-600"}`}>
                     <div className='flex-1'>
                     <h3 className='text-xl font-semibold text-gray-900 dark:text-white mb-2'>{plan.name}</h3>
                     <p className='text-2xl font-bold text-purple-600 dark:text-purple-300 mb-4'>${plan.price}
@@ -65,7 +64,7 @@ const Credits = () => {
                     ))}
                     </ul>
                     </div>
-                    <button onClick={()=> toast.promise(purchasePlan(plan._id), {loading: 'Processing...'})} className='mt-6 bg-purple-600 hover:bg-purple-700 active:bg-purple-800 text-white font-medium py-2 rounded transition-colors cursor-pointer'>Buy Now</button>
+                    <button onClick={()=> toast.promise(purchasePlan(plan._id), {loading: 'Processing...'})} className='mt-6 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 shadow flex justify-center items-center text-white font-medium py-2 rounded transition-all cursor-pointer'>Buy Now</button>
                 </div>
             ))}
         </div>

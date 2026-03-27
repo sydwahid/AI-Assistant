@@ -2,7 +2,65 @@ import axios from "axios"
 import Chat from "../models/Chat.js"
 import User from "../models/User.js"
 import imagekit from "../configs/imageKit.js"
-import openai from '../configs/openai.js'
+
+const GEMINI_BASE_URL = process.env.GEMINI_BASE_URL || "https://generativelanguage.googleapis.com/v1beta/openai";
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+
+const parseJsonSafely = (value) => {
+    try {
+        return JSON.parse(value)
+    } catch {
+        return null
+    }
+}
+
+const normalizeGeminiPayload = (payload) => Array.isArray(payload) ? payload[0] : payload
+
+const createGeminiError = (status, payload, fallbackMessage) => {
+    const normalizedPayload = normalizeGeminiPayload(payload)
+    const message =
+        normalizedPayload?.error?.message ||
+        normalizedPayload?.message ||
+        fallbackMessage ||
+        `Gemini request failed with status ${status}`
+
+    const error = new Error(message)
+    error.status = status
+    error.payload = normalizedPayload
+    return error
+}
+
+const createGeminiChatCompletion = async (messages) => {
+    if (!process.env.GEMINI_API_KEY) {
+        throw createGeminiError(500, null, "GEMINI_API_KEY is missing on the server")
+    }
+
+    const response = await fetch(`${GEMINI_BASE_URL}/chat/completions`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.GEMINI_API_KEY}`,
+        },
+        body: JSON.stringify({
+            model: GEMINI_MODEL,
+            messages,
+        }),
+    })
+
+    const rawBody = await response.text()
+    const payload = parseJsonSafely(rawBody)
+
+    if (!response.ok) {
+        throw createGeminiError(response.status, payload, rawBody)
+    }
+
+    const completion = normalizeGeminiPayload(payload)
+    if (!completion?.choices?.[0]?.message) {
+        throw createGeminiError(502, completion, "Gemini returned an unexpected response shape")
+    }
+
+    return completion
+}
 
 // Text-based AI chat message controller
 export const textMessageController = async (req, res) => {
@@ -30,10 +88,7 @@ export const textMessageController = async (req, res) => {
             .slice(-MAX_CONTEXT_MESSAGES)
             .map(m => ({ role: m.role, content: m.content }))
 
-        const { choices } = await openai.chat.completions.create({
-            model: "gemini-2.0-flash",
-            messages: conversationHistory,
-        });
+        const { choices } = await createGeminiChatCompletion(conversationHistory)
 
         const reply = { ...choices[0].message, timestamp: Date.now(), isImage: false }
         res.json({ success: true, reply })
@@ -45,10 +100,6 @@ export const textMessageController = async (req, res) => {
 
 
     } catch (error) {
-        const status = error?.status || error?.response?.status
-        if (status === 429) {
-            return res.json({ success: false, message: "AI rate limit reached. Please wait a moment and try again." })
-        }
         res.json({ success: false, message: error.message })
     }
 }
