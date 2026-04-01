@@ -1,0 +1,282 @@
+:root {
+    --app-bg:
+        radial-gradient(circle at top left, rgba(125, 211, 252, 0.42), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(59, 130, 246, 0.16), transparent 24%),
+        linear-gradient(150deg, #eff8ff 0%, #dbefff 38%, #d4edf4 100%);
+    --panel-bg: rgba(244, 250, 255, 0.62);
+    --card-bg: rgba(255, 255, 255, 0.42);
+    --card-bg-hover: rgba(255, 255, 255, 0.62);
+    --input-bg: rgba(255, 255, 255, 0.52);
+    --text-primary: rgba(9, 24, 40, 0.92);
+    --text-muted: rgba(53, 84, 110, 0.68);
+    --divider: rgba(102, 155, 196, 0.24);
+    --console-shadow: 0 24px 60px rgba(39, 67, 94, 0.16);
+    --card-shadow: 0 14px 36px rgba(52, 84, 112, 0.12);
+    --accent-start: #74e0ff;
+    --accent-end: #2488ff;
+    --assistant-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.58), rgba(214, 241, 255, 0.4));
+    --user-bg: linear-gradient(145deg, rgba(135, 219, 255, 0.28), rgba(36, 136, 255, 0.18));
+}
+
+.dark {
+    --app-bg:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.14), transparent 24%),
+        radial-gradient(circle at 85% 18%, rgba(96, 165, 250, 0.1), transparent 22%),
+        linear-gradient(150deg, #040b16 0%, #081426 38%, #0c1f33 100%);
+    --panel-bg: rgba(7, 16, 30, 0.62);
+    --card-bg: rgba(10, 22, 38, 0.55);
+    --card-bg-hover: rgba(13, 30, 50, 0.7);
+    --input-bg: rgba(9, 20, 36, 0.72);
+    --text-primary: rgba(233, 245, 255, 0.95);
+    --text-muted: rgba(158, 192, 219, 0.7);
+    --divider: rgba(95, 142, 186, 0.22);
+    --console-shadow: 0 26px 70px rgba(0, 0, 0, 0.4);
+    --card-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+    --accent-start: #6ee7ff;
+    --accent-end: #3b82f6;
+    --assistant-bg: linear-gradient(145deg, rgba(10, 24, 42, 0.88), rgba(7, 18, 30, 0.78));
+    --user-bg: linear-gradient(145deg, rgba(38, 187, 255, 0.24), rgba(36, 136, 255, 0.16));
+}
+
+.app-bg {
+    background-image: var(--app-bg);
+    background-attachment: fixed;
+    color: var(--text-primary);
+}
+
+.glass-panel,
+.dark .glass-panel {
+    background: var(--panel-bg);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-right: 1px solid var(--divider);
+    box-shadow: var(--console-shadow);
+}
+
+.glass-card,
+.dark .glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid var(--divider);
+    box-shadow: var(--card-shadow);
+}
+
+.glass-card:hover,
+.dark .glass-card:hover {
+    background: var(--card-bg-hover);
+    box-shadow: 0 18px 42px rgba(42, 72, 98, 0.18);
+}
+
+.glass-input,
+.dark .glass-input {
+    background: var(--input-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--divider);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 12px 34px rgba(21, 42, 62, 0.14);
+}
+
+.glass-input:focus-within,
+.dark .glass-input:focus-within {
+    border-color: rgba(90, 195, 255, 0.62);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 0 0 3px rgba(96, 165, 250, 0.14), 0 14px 40px rgba(20, 64, 109, 0.18);
+}
+
+.glass-text,
+.dark .glass-text {
+    color: var(--text-primary);
+}
+
+.glass-text-muted,
+.dark .glass-text-muted {
+    color: var(--text-muted);
+}
+
+.robot-shell {
+    background:
+        radial-gradient(circle at top, rgba(103, 232, 249, 0.12), transparent 36%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+    border: 1px solid var(--divider);
+    box-shadow: var(--console-shadow);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+}
+
+.robot-console {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04)),
+        var(--panel-bg);
+    border: 1px solid var(--divider);
+    box-shadow: var(--console-shadow);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+.robot-divider {
+    border-color: var(--divider);
+}
+
+.robot-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgba(111, 215, 255, 0.28);
+    background: rgba(111, 215, 255, 0.08);
+    color: var(--text-primary);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.robot-overlay-shell {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)),
+        var(--panel-bg);
+    border: 1px solid var(--divider);
+    box-shadow: var(--console-shadow);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+}
+
+.robot-stage-full {
+    background:
+        radial-gradient(circle at center, rgba(103, 232, 249, 0.12), transparent 42%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.robot-console-panel {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06)),
+        var(--panel-bg);
+    border: 1px solid var(--divider);
+    box-shadow: var(--console-shadow);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+}
+
+.robot-action-btn {
+    color: white;
+    background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+    box-shadow: 0 16px 36px rgba(35, 128, 216, 0.28);
+}
+
+.robot-action-btn:hover {
+    filter: brightness(1.04);
+}
+
+.robot-control-btn {
+    border: 1px solid var(--divider);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.robot-send-btn {
+    border: 1px solid rgba(110, 194, 255, 0.24);
+    background: rgba(110, 194, 255, 0.12);
+    box-shadow: 0 10px 28px rgba(31, 97, 144, 0.16);
+}
+
+.robot-send-btn:hover {
+    background: rgba(110, 194, 255, 0.18);
+}
+
+.ui-icon {
+    transition: opacity 0.18s ease, transform 0.18s ease, filter 0.18s ease;
+    filter: drop-shadow(0 1px 1px rgba(9, 24, 40, 0.08));
+}
+
+.dark .ui-icon {
+    filter: brightness(0) invert(1) drop-shadow(0 1px 1px rgba(148, 163, 184, 0.12));
+}
+
+.ui-icon-on-accent {
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.12));
+}
+
+.robot-toggle {
+    border: 1px solid var(--divider);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 8px 22px rgba(21, 42, 62, 0.12);
+    color: var(--text-primary);
+}
+
+.robot-toggle-thumb {
+    background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+    box-shadow: 0 8px 24px rgba(35, 128, 216, 0.28);
+}
+
+.robot-assistant-bubble {
+    background: var(--assistant-bg);
+    border: 1px solid var(--divider);
+    box-shadow: var(--card-shadow);
+}
+
+.robot-user-bubble {
+    background: var(--user-bg);
+    border: 1px solid rgba(112, 203, 255, 0.24);
+    box-shadow: 0 14px 36px rgba(24, 83, 126, 0.12);
+}
+
+.robot-scroll {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(110, 194, 255, 0.32) transparent;
+}
+
+.robot-scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.robot-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.robot-scroll::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 999px;
+}
+
+.robot-scroll:hover::-webkit-scrollbar-thumb,
+.robot-scroll:focus-within::-webkit-scrollbar-thumb,
+.chat-scroll:hover::-webkit-scrollbar-thumb,
+.chat-scroll:focus-within::-webkit-scrollbar-thumb {
+    background: rgba(110, 194, 255, 0.3);
+}
+
+.chat-scroll:hover,
+.chat-scroll:focus-within,
+.robot-scroll:hover,
+.robot-scroll:focus-within {
+    scrollbar-color: rgba(110, 194, 255, 0.35) transparent;
+}
+
+.spline-shell,
+.spline-shell > div {
+    width: 100%;
+    height: 100%;
+}
+
+.spline-shell canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+@media (max-width: 1023px) {
+    .glass-panel,
+    .dark .glass-panel {
+        border-right: none;
+    }
+
+    .robot-shell,
+    .robot-stage-full {
+        min-height: clamp(260px, 38vh, 420px);
+    }
+
+    .robot-console-panel {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}

@@ -1,0 +1,31 @@
+2026-03-31 22:50:50,038 INFO: Scheduler started
+2026-03-31 22:50:50,040 INFO: Background scheduler started and jobs loaded.
+2026-03-31 23:02:53,255 INFO: Scheduler started
+2026-03-31 23:02:53,257 INFO: Background scheduler started and jobs loaded.
+2026-03-31 23:42:39,195 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-31 23:42:39,196 INFO: Scheduled job reminder_14_35_3011 -> 14:35 | Test from CLI
+2026-04-01 02:30:01,136 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-01 02:30:01,137 INFO: Scheduled job reminder_14_35_4408 -> 14:35 | Test from CLI
+2026-04-01 02:30:01,142 INFO: Added job "send_reminder" to job store "default"
+2026-04-01 02:30:01,143 INFO: Scheduler started
+2026-04-01 02:30:01,144 INFO: Background scheduler started and jobs loaded.
+2026-04-01 02:37:33,949 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-01 02:37:33,950 INFO: Scheduled job reminder_14_35_3050 -> 14:35 | Test from CLI
+2026-04-01 02:37:33,954 INFO: Added job "send_reminder" to job store "default"
+2026-04-01 02:37:33,954 INFO: Scheduler started
+2026-04-01 02:37:33,955 INFO: Background scheduler started and jobs loaded.
+2026-04-01 03:45:59,238 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-01 03:45:59,238 INFO: Scheduled job reminder_14_35_1098 -> 14:35 | Test from CLI
+2026-04-01 03:45:59,241 INFO: Added job "send_reminder" to job store "default"
+2026-04-01 03:45:59,241 INFO: Scheduler started
+2026-04-01 03:45:59,242 INFO: Background scheduler started and jobs loaded.
+2026-04-01 03:47:58,477 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-01 03:47:58,478 INFO: Scheduled job reminder_14_35_311 -> 14:35 | Test from CLI
+2026-04-01 03:47:58,481 INFO: Added job "send_reminder" to job store "default"
+2026-04-01 03:47:58,482 INFO: Scheduler started
+2026-04-01 03:47:58,483 INFO: Background scheduler started and jobs loaded.
+2026-04-01 14:48:56,795 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-01 14:48:56,796 INFO: Scheduled job reminder_14_35_5834 -> 14:35 | Test from CLI
+2026-04-01 14:48:56,799 INFO: Added job "send_reminder" to job store "default"
+2026-04-01 14:48:56,799 INFO: Scheduler started
+2026-04-01 14:48:56,800 INFO: Background scheduler started and jobs loaded.

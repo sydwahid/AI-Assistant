@@ -12,7 +12,7 @@ import close_icon from "./close_icon.svg";
 import bin_icon from "./bin_icon.svg";
 import logout_icon from "./logout_icon.svg";
 import diamond_icon from "./diamond_icon.svg";
-import gallery_icon from "./gallery_icon.svg";
+import gallery_icon from "./gallery_icon_clean.svg";
 
 export const assets = {
     logo,

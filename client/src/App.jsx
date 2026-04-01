@@ -21,14 +21,19 @@ const App = () => {
   if (pathname === '/loading' || loadingUser) return <Loading />
 
   return (
-    <div className="app-bg min-h-screen text-white transition-colors duration-300">
+    <div className="app-bg min-h-screen text-white transition-colors duration-300 overflow-hidden">
       <Toaster />
       {!isMenuOpen && (
-        <img
-          src={assets.menu_icon}
-          className="absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden invert z-50"
+        <button
+          type="button"
+          className="glass-card absolute top-3 left-3 z-50 flex h-11 w-11 items-center justify-center rounded-2xl md:hidden"
           onClick={() => setIsMenuOpen(true)}
-        />
+        >
+          <img
+            src={assets.menu_icon}
+            className="ui-icon h-5 w-5 opacity-85"
+          />
+        </button>
       )}
 
       {user ? (

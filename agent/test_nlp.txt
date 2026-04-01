@@ -1,0 +1,3 @@
+{'match': True, 'intent': 'maximize window', 'confidence': 0.68, 'dangerous': False, 'parameterized': False, 'args': '', 'matched_trigger': 'maximize this'}
+{'match': True, 'intent': 'copy text', 'confidence': 0.71, 'dangerous': False, 'parameterized': False, 'args': '', 'matched_trigger': 'copy that'}
+{'match': True, 'intent': 'type', 'confidence': 0.71, 'dangerous': False, 'parameterized': True, 'args': 'write hello world  notepad', 'matched_trigger': 'write this down'}
