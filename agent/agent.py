@@ -70,7 +70,7 @@ def speak(text: str, user_name: str = ""):
                 creationflags=0x08000000
             )
         except Exception as e:
-            print(f"⚠️  TTS PowerShell Execution error: {e}")
+            print(f"  TTS PowerShell Execution error: {e}")
 
 print("🔊 Native PowerShell TTS enabled")
 
@@ -96,7 +96,7 @@ def connect():
 
 @sio.event
 def disconnect():
-    print("❌ Agent disconnected from ws-server")
+    print("  Agent disconnected from ws-server")
 
 
 @sio.on("run")
@@ -168,17 +168,17 @@ if __name__ == "__main__":
                 # Emit as a normal result so frontend shows it in the chat stream
                 sio.emit('result', msg)
             except Exception as e:
-                print(f"⚠️  Failed to forward reminder via socket: {e}")
+                print(f"  Failed to forward reminder via socket: {e}")
 
         try:
             start_scheduler_with_callback(_forward_reminder)
             print("⏰ Scheduler started and will forward reminders to frontend.")
         except Exception as e:
-            print(f"⚠️  Scheduler failed to start: {e}")
+            print(f"  Scheduler failed to start: {e}")
         sio.wait()  # Keeps the process alive
     except KeyboardInterrupt:
         print("\n👋 Agent shutting down...")
         sio.disconnect()
     except Exception as e:
-        print(f"❌ Connection failed: {e}")
+        print(f"  Connection failed: {e}")
         print("   Is the ws-server running? Start it with: node server.js")

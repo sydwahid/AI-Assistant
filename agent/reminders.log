@@ -29,3 +29,57 @@
 2026-04-01 14:48:56,799 INFO: Added job "send_reminder" to job store "default"
 2026-04-01 14:48:56,799 INFO: Scheduler started
 2026-04-01 14:48:56,800 INFO: Background scheduler started and jobs loaded.
+2026-04-01 18:16:59,306 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-01 18:16:59,307 INFO: Scheduled job reminder_14_35_5777 -> 14:35 | Test from CLI
+2026-04-01 18:16:59,310 INFO: Added job "send_reminder" to job store "default"
+2026-04-01 18:16:59,310 INFO: Scheduler started
+2026-04-01 18:16:59,311 INFO: Background scheduler started and jobs loaded.
+2026-04-01 18:19:34,479 WARNING: exception parsing edid str for DISPLAY\CMN142B\5&2896793&0&UID256_0 - EDIDParseError: parsed EDID returned invalid display name
+2026-04-01 18:34:39,842 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-01 18:34:39,843 INFO: Scheduled job reminder_14_35_300 -> 14:35 | Test from CLI
+2026-04-01 18:34:39,845 INFO: Added job "send_reminder" to job store "default"
+2026-04-01 18:34:39,845 INFO: Scheduler started
+2026-04-01 18:34:39,846 INFO: Background scheduler started and jobs loaded.
+2026-04-01 18:52:02,808 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-01 18:52:02,809 INFO: Scheduled job reminder_14_35_3019 -> 14:35 | Test from CLI
+2026-04-01 18:52:02,811 INFO: Added job "send_reminder" to job store "default"
+2026-04-01 18:52:02,811 INFO: Scheduler started
+2026-04-01 18:52:02,812 INFO: Background scheduler started and jobs loaded.
+2026-04-02 13:29:22,763 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-02 13:29:22,764 INFO: Scheduled job reminder_14_35_3871 -> 14:35 | Test from CLI
+2026-04-02 13:29:22,767 INFO: Added job "send_reminder" to job store "default"
+2026-04-02 13:29:22,767 INFO: Scheduler started
+2026-04-02 13:29:22,768 INFO: Background scheduler started and jobs loaded.
+2026-04-02 14:32:53,873 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-02 14:32:53,873 INFO: Scheduled job reminder_14_35_3441 -> 14:35 | Test from CLI
+2026-04-02 14:32:53,876 INFO: Added job "send_reminder" to job store "default"
+2026-04-02 14:32:53,876 INFO: Scheduler started
+2026-04-02 14:32:53,877 INFO: Background scheduler started and jobs loaded.
+2026-04-02 14:33:42,295 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-02 14:33:42,296 INFO: Scheduled job reminder_14_35_6392 -> 14:35 | Test from CLI
+2026-04-02 14:33:42,298 INFO: Added job "send_reminder" to job store "default"
+2026-04-02 14:33:42,298 INFO: Scheduler started
+2026-04-02 14:33:42,299 INFO: Background scheduler started and jobs loaded.
+2026-04-02 14:35:00,019 INFO: Running job "send_reminder (trigger: cron[hour='14', minute='35'], next run at: 2026-04-02 14:35:00 IST)" (scheduled at 2026-04-02 14:35:00+05:30)
+2026-04-02 14:35:00,020 INFO: Reminder: Test from CLI
+2026-04-02 14:35:00,050 INFO: Job "send_reminder (trigger: cron[hour='14', minute='35'], next run at: 2026-04-03 14:35:00 IST)" executed successfully
+2026-04-02 14:57:18,483 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-02 14:57:18,484 INFO: Scheduled job reminder_14_35_6891 -> 14:35 | Test from CLI
+2026-04-02 14:57:18,486 INFO: Added job "send_reminder" to job store "default"
+2026-04-02 14:57:18,486 INFO: Scheduler started
+2026-04-02 14:57:18,487 INFO: Background scheduler started and jobs loaded.
+2026-04-24 10:07:17,219 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-24 10:07:17,220 INFO: Scheduled job reminder_14_35_402 -> 14:35 | Test from CLI
+2026-04-24 10:07:17,224 INFO: Added job "send_reminder" to job store "default"
+2026-04-24 10:07:17,225 INFO: Scheduler started
+2026-04-24 10:07:17,226 INFO: Background scheduler started and jobs loaded.
+2026-04-26 10:11:18,496 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-26 10:11:18,496 INFO: Scheduled job reminder_14_35_4472 -> 14:35 | Test from CLI
+2026-04-26 10:11:18,500 INFO: Added job "send_reminder" to job store "default"
+2026-04-26 10:11:18,500 INFO: Scheduler started
+2026-04-26 10:11:18,501 INFO: Background scheduler started and jobs loaded.
+2026-05-06 15:34:38,990 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-05-06 15:34:38,991 INFO: Scheduled job reminder_14_35_9773 -> 14:35 | Test from CLI
+2026-05-06 15:34:38,995 INFO: Added job "send_reminder" to job store "default"
+2026-05-06 15:34:38,995 INFO: Scheduler started
+2026-05-06 15:34:38,996 INFO: Background scheduler started and jobs loaded.

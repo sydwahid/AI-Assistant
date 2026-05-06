@@ -17,8 +17,8 @@ def tell_joke():
             "Why was the JavaScript developer sad? Because he didn't Node how to Express himself.",
             "!false — it's funny because it's true.",
         ]
-        return f"😄 {random.choice(fallback)}"
-    return f"😄 {pyjokes.get_joke()}"
+        return f" {random.choice(fallback)}"
+    return f" {pyjokes.get_joke()}"
 
 
 def coin_flip():
@@ -30,12 +30,12 @@ def coin_flip():
 def roll_dice():
     result = random.randint(1, 6)
     dice_emoji = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"]
-    return f"🎲 {dice_emoji[result - 1]} You rolled a **{result}!**"
+    return f" {dice_emoji[result - 1]} You rolled a **{result}!**"
 
 
 def random_number():
     num = random.randint(1, 100)
-    return f"🔢 Random number (1-100): **{num}**"
+    return f" Random number (1-100): **{num}**"
 
 
 def magic_8ball():

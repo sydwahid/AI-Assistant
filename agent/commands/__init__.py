@@ -15,7 +15,7 @@ from .fun import FUN_COMMANDS
 from .automation_clean import AUTOMATION_COMMANDS, AUTOMATION_PARAM_COMMANDS
 
 
-# ─── Merge all simple commands into one dict ──────────────────────────────
+# ─── Merge all simple commands into one dict 
 ALL_SIMPLE_COMMANDS = {
     **APP_COMMANDS,
     **SYSTEM_COMMANDS,
@@ -25,7 +25,7 @@ ALL_SIMPLE_COMMANDS = {
     **AUTOMATION_COMMANDS,
 }
 
-# ─── Merge all parameterized commands ─────────────────────────────────────
+# ─── Merge all parameterized commands 
 ALL_PARAM_COMMANDS = {
     **WEB_PARAM_COMMANDS,
     **AUTOMATION_PARAM_COMMANDS,
@@ -61,7 +61,7 @@ def dispatch_command(cmd: str) -> str:
         if cmd_lower in ALL_SIMPLE_COMMANDS:
             return ALL_SIMPLE_COMMANDS[cmd_lower]()
 
-        return f"❌ Unknown command: '{cmd}'"
+        return f"  Unknown command: '{cmd}'"
 
     except Exception as e:
-        return f"❌ Error executing '{cmd}': {e}"
+        return f"  Error executing '{cmd}': {e}"

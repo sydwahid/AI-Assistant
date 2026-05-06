@@ -35,64 +35,64 @@ def _get_volume_interface():
 
 def mute():
     if not PYCAW_AVAILABLE:
-        return "❌ pycaw not installed — cannot control volume"
+        return "  pycaw not installed — cannot control volume"
     volume = _get_volume_interface()
     volume.SetMute(1, None)
-    return "🔇 Sound muted"
+    return " Sound muted"
 
 
 def unmute():
     if not PYCAW_AVAILABLE:
-        return "❌ pycaw not installed — cannot control volume"
+        return "  pycaw not installed — cannot control volume"
     volume = _get_volume_interface()
     volume.SetMute(0, None)
-    return "🔊 Sound unmuted"
+    return " Sound unmuted"
 
 
 def volume_up():
     if not PYCAW_AVAILABLE:
-        return "❌ pycaw not installed — cannot control volume"
+        return "  pycaw not installed — cannot control volume"
     vol = _get_volume_interface()
     current = vol.GetMasterVolumeLevelScalar()
     new_level = min(1.0, current + 0.1)
     vol.SetMasterVolumeLevelScalar(new_level, None)
-    return f"🔊 Volume: {int(new_level * 100)}%"
+    return f" Volume: {int(new_level * 100)}%"
 
 
 def volume_down():
     if not PYCAW_AVAILABLE:
-        return "❌ pycaw not installed — cannot control volume"
+        return "  pycaw not installed — cannot control volume"
     vol = _get_volume_interface()
     current = vol.GetMasterVolumeLevelScalar()
     new_level = max(0.0, current - 0.1)
     vol.SetMasterVolumeLevelScalar(new_level, None)
-    return f"🔉 Volume: {int(new_level * 100)}%"
+    return f" Volume: {int(new_level * 100)}%"
 
 
 # ─── Brightness helpers ──────────────────────────────────────────────────
 
 def brightness_up():
     if not SBC_AVAILABLE:
-        return "❌ screen_brightness_control not installed"
+        return "  screen_brightness_control not installed"
     try:
         current = sbc.get_brightness()[0]
         new_val = min(100, current + 10)
         sbc.set_brightness(new_val)
-        return f"🔆 Brightness: {new_val}%"
+        return f" Brightness: {new_val}%"
     except Exception as e:
-        return f"❌ Brightness error: {e}"
+        return f"  Brightness error: {e}"
 
 
 def brightness_down():
     if not SBC_AVAILABLE:
-        return "❌ screen_brightness_control not installed"
+        return "  screen_brightness_control not installed"
     try:
         current = sbc.get_brightness()[0]
         new_val = max(0, current - 10)
         sbc.set_brightness(new_val)
-        return f"🔅 Brightness: {new_val}%"
+        return f" Brightness: {new_val}%"
     except Exception as e:
-        return f"❌ Brightness error: {e}"
+        return f"  Brightness error: {e}"
 
 
 # ─── Screenshot ───────────────────────────────────────────────────────────
@@ -101,7 +101,7 @@ def screenshot():
     try:
         from PIL import ImageGrab
     except ImportError:
-        return "❌ Pillow (PIL) library not installed — cannot take screenshot"
+        return "  Pillow (PIL) library not installed — cannot take screenshot"
         
     try:
         # Ensure the custom personal directory explicitly exists
@@ -116,24 +116,24 @@ def screenshot():
         img.save(path)
         
         # Clean, concise Voice Feedback
-        return "📸 screenshot taken and it saved"
+        return " screenshot taken and it saved"
     except Exception as e:
-        return f"❌ Screenshot failed: {e}"
+        return f"  Screenshot failed: {e}"
 
 
 # ─── Media Controls ───────────────────────────────────────────────────────
 
 def play_pause_media():
     if not pyautogui:
-        return "❌ pyautogui not installed"
+        return "  pyautogui not installed"
     pyautogui.press('playpause')
-    return "⏯️ Toggled Play/Pause"
+    return " Toggled Play/Pause"
 
 def next_track():
     if not pyautogui:
-        return "❌ pyautogui not installed"
+        return "  pyautogui not installed"
     pyautogui.press('nexttrack')
-    return "⏭️ Skipped to next track"
+    return " Skipped to next track"
 
 
 MEDIA_COMMANDS = {

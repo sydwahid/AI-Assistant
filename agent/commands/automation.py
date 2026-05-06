@@ -27,25 +27,25 @@ except Exception:
 def type_text(text):
     """Type text at the current cursor position."""
     if not PYAUTOGUI_AVAILABLE:
-        return "❌ pyautogui not installed — cannot type text"
+        return "  pyautogui not installed — cannot type text"
     if not text:
-        return "❌ Please provide text to type. Example: 'type Hello World'"
+        return "  Please provide text to type. Example: 'type Hello World'"
     # Small delay so user can switch to target window
     time.sleep(2)
     pyautogui.typewrite(text, interval=0.03)
-    return f"⌨️ Typed: '{text}'"
+    return f" Typed: '{text}'"
 
 
 def write_in_notepad(text):
     """Opens notepad and types the text inside it."""
     if not PYAUTOGUI_AVAILABLE:
-        return "❌ pyautogui not installed"
+        return "  pyautogui not installed"
     import os
     os.startfile("notepad.exe")
     time.sleep(1.5) # Wait for notepad to gain focus
     if text:
         pyautogui.typewrite(text, interval=0.03)
-    return f"📝 Wrote in Notepad: '{text}'"
+    return f" Wrote in Notepad: '{text}'"
 
 
 def take_picture():
@@ -69,14 +69,14 @@ def take_picture():
     winsound.Beep(2000, 800) # Final capture sound
     
     if not cap.isOpened():
-        return "❌ Failed to access your hardware camera."
+        return "  Failed to access your hardware camera."
 
     ret, frame = cap.read()
     cap.release()
     cv2.destroyAllWindows()
 
     if not ret:
-        return "❌ The camera failed to capture a clear image."
+        return "  The camera failed to capture a clear image."
 
     # Force save exclusively to the requested folder
     save_folder = r"C:\Users\sayye\OneDrive\Pictures\Camera Roll"
@@ -91,23 +91,23 @@ def take_picture():
 
 def scroll_up():
     if not PYAUTOGUI_AVAILABLE:
-        return "❌ pyautogui not installed"
+        return "  pyautogui not installed"
     pyautogui.scroll(5)
-    return "⬆️ Scrolled up"
+    return " Scrolled up"
 
 
 def scroll_down():
     if not PYAUTOGUI_AVAILABLE:
-        return "❌ pyautogui not installed"
+        return "  pyautogui not installed"
     pyautogui.scroll(-5)
-    return "⬇️ Scrolled down"
+    return " Scrolled down"
 
 
 def click_mouse():
     if not PYAUTOGUI_AVAILABLE:
-        return "❌ pyautogui not installed"
+        return "  pyautogui not installed"
     pyautogui.click()
-    return "🖱️ Clicked at current mouse position"
+    return " Clicked at current mouse position"
 
 
 def empty_recycle_bin():
@@ -115,37 +115,37 @@ def empty_recycle_bin():
     import ctypes
     try:
         ctypes.windll.shell32.SHEmptyRecycleBinW(None, None, 0x07)
-        return "🗑️ Recycle Bin emptied"
+        return " Recycle Bin emptied"
     except Exception as e:
-        return f"❌ Could not empty Recycle Bin: {e}"
+        return f"  Could not empty Recycle Bin: {e}"
 
 
 # ── Windows & Hotkey Macros ────────────────────────────────
 
 def copy_text():
-    if not PYAUTOGUI_AVAILABLE: return "❌ pyautogui not installed"
+    if not PYAUTOGUI_AVAILABLE: return "  pyautogui not installed"
     pyautogui.hotkey('ctrl', 'c')
-    return "📋 Copied"
+    return " Copied"
 
 def paste_text():
-    if not PYAUTOGUI_AVAILABLE: return "❌ pyautogui not installed"
+    if not PYAUTOGUI_AVAILABLE: return "  pyautogui not installed"
     pyautogui.hotkey('ctrl', 'v')
-    return "📝 Pasted"
+    return " Pasted"
 
 def save_file():
-    if not PYAUTOGUI_AVAILABLE: return "❌ pyautogui not installed"
+    if not PYAUTOGUI_AVAILABLE: return "  pyautogui not installed"
     pyautogui.hotkey('ctrl', 's')
-    return "💾 Saved"
+    return " Saved"
 
 def select_all():
-    if not PYAUTOGUI_AVAILABLE: return "❌ pyautogui not installed"
+    if not PYAUTOGUI_AVAILABLE: return "  pyautogui not installed"
     pyautogui.hotkey('ctrl', 'a')
     return "🟦 Selected all text"
 
 def minimize_windows():
-    if not PYAUTOGUI_AVAILABLE: return "❌ pyautogui not installed"
+    if not PYAUTOGUI_AVAILABLE: return "  pyautogui not installed"
     pyautogui.hotkey('win', 'd')
-    return "📉 Minimized everything to desktop"
+    return " Minimized everything to desktop"
 
 def maximize_window():
     import ctypes
@@ -156,7 +156,7 @@ def maximize_window():
     time.sleep(1.5) 
     hwnd = ctypes.windll.user32.GetForegroundWindow()
     ctypes.windll.user32.ShowWindow(hwnd, 3) # 3 = SW_MAXIMIZE
-    return "📈 Maximized current window"
+    return " Maximized current window"
 
 def start_deep_work():
     import os
@@ -171,18 +171,18 @@ def start_deep_work():
         subprocess.Popen("code .", shell=True)
         return "🧠 Deep Work Mode Activated: Opened GitHub, WhatsApp, and VS Code"
     except Exception as e:
-        return f"❌ Deep Work routine failed: {e}"
+        return f"  Deep Work routine failed: {e}"
 
 
 def set_alarm(raw):
     """Set an alarm. Expect input containing a time (HH:MM). Optional trailing text becomes the task."""
     import re
     if not raw or not isinstance(raw, str):
-        return "❌ Please provide a time. Example: set alarm 07:30 to wake up"
+        return "  Please provide a time. Example: set alarm 07:30 to wake up"
 
     m = re.search(r"(\d{1,2}:\d{2})", raw)
     if not m:
-        return "❌ Could not find a time. Use HH:MM format (e.g. 07:30)."
+        return "  Could not find a time. Use HH:MM format (e.g. 07:30)."
 
     time_str = m.group(1)
     # Remove the matched time from the text to use remaining as task
@@ -194,9 +194,9 @@ def set_alarm(raw):
         try:
             _scheduler.add_schedule(time_str, task)
         except Exception as e:
-            return f"❌ Scheduler error: {e}"
+            return f"  Scheduler error: {e}"
     else:
-        return "❌ Scheduler not available (make sure agent/scheduler.py exists and is importable)."
+        return "  Scheduler not available (make sure agent/scheduler.py exists and is importable)."
 
     # Speak confirmation if possible
     confirm = f"Alarm set for {time_str}: {task}"
@@ -208,7 +208,7 @@ def set_alarm(raw):
         except Exception:
             pass
 
-    return f"✅ {confirm}"
+    return f" {confirm}"
 
 
 # Simple commands (no arguments)

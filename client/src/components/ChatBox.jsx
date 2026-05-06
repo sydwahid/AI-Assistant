@@ -144,9 +144,9 @@ const ChatBox = ({ isMenuOpen }) => {
 
     if (intentResult && intentResult.match) {
       if (intentResult.dangerous) {
-        const password = window.prompt(`⚠️ "${intentResult.intent}" is dangerous.\nEnter password to confirm:`);
+        const password = window.prompt(` "${intentResult.intent}" is dangerous.\nEnter password to confirm:`);
         if (password !== DANGER_PASSWORD) {
-          toast.error("❌ Wrong password — command cancelled");
+          toast.error("  Wrong password — command cancelled");
           setLoading(false);
           return;
         }
@@ -187,9 +187,9 @@ const ChatBox = ({ isMenuOpen }) => {
     if (intentResult && intentResult.match) {
       // If the NLP engine flagged it as dangerous
       if (intentResult.dangerous) {
-        const password = window.prompt(`⚠️ "${intentResult.intent}" is dangerous.\nEnter password to confirm:`)
+        const password = window.prompt(` "${intentResult.intent}" is dangerous.\nEnter password to confirm:`)
         if (password !== DANGER_PASSWORD) {
-          toast.error("❌ Wrong password — command cancelled")
+          toast.error("  Wrong password — command cancelled")
           setLoading(false)
           return
         }
@@ -328,10 +328,10 @@ const ChatBox = ({ isMenuOpen }) => {
                 onClick={toggleListening}
                 disabled={loading}
                 className={`robot-control-btn flex h-10 w-10 items-center justify-center rounded-full transition-colors active:scale-95 ${micMode === 'OFF'
-                    ? 'glass-text-muted hover:text-cyan-300'
-                    : micMode === 'PASSIVE'
-                      ? 'border-cyan-400/35 text-cyan-300 animate-[pulse_2s_ease-in-out_infinite] shadow-[0_0_20px_rgba(56,189,248,0.2)]'
-                      : 'border-cyan-300/45 text-cyan-200 animate-pulse shadow-[0_0_28px_rgba(103,232,249,0.28)]'
+                  ? 'glass-text-muted hover:text-cyan-300'
+                  : micMode === 'PASSIVE'
+                    ? 'border-cyan-400/35 text-cyan-300 animate-[pulse_2s_ease-in-out_infinite] shadow-[0_0_20px_rgba(56,189,248,0.2)]'
+                    : 'border-cyan-300/45 text-cyan-200 animate-pulse shadow-[0_0_28px_rgba(103,232,249,0.28)]'
                   }`}
                 title="Dictate message"
               >
