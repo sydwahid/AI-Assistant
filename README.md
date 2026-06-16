@@ -17,26 +17,19 @@ The project focuses on delivering a clean, responsive, and practical AI experien
 
 ## Tech Stack
 
-* HTML
-* CSS
-* JavaScript
-* AI API Integration
+
+React.js
+Tailwind CSS
+Gemini API (conversational AI)
+Weather API
+Image Generation API
+JavaScript (ES6+)
 
 ---
 
 ## Goal of the Project
 
 The goal of QuickGPT is to create a simple personal AI assistant experience without unnecessary complexity, focusing on speed, usability, and accessibility.
-
----
-
-## Future Improvements
-
-* Voice assistant support
-* Better AI responses
-* User authentication
-* Chat history
-* Mobile optimization
 
 ---
 
