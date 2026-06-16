@@ -18,12 +18,12 @@ The project focuses on delivering a clean, responsive, and practical AI experien
 ## Tech Stack
 
 
-React.js
-Tailwind CSS
-Gemini API (conversational AI)
-Weather API
-Image Generation API
-JavaScript (ES6+)
+* React.js
+* Tailwind CSS
+* Gemini API (conversational AI)
+* Weather API
+* Image Generation API
+* JavaScript (ES6+)
 
 ---
 
