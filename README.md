@@ -7,7 +7,7 @@
   <p>A full-stack, voice-activated AI assistant featuring a <strong>React UI</strong>, a <strong>Node.js/Express Backend</strong>, real-time <strong>WebSockets</strong>, and a custom <strong>Local Python NLP Engine</strong> for OS-level automation.</p>
   
   <h3>
-    <a href="https://jarvis-client-beta.vercel.app">🔴 View Live Demo Here</a>
+    <a href="https://ai-assistant-lyart-eight.vercel.app">🔴 View Live Demo Here</a>
   </h3>
 </div>
 
@@ -42,7 +42,7 @@ This project is broken down into four distinct, highly-decoupled services:
 
 ## 🚀 Live Links
 
-- **Frontend App**: [https://jarvis-client-beta.vercel.app](https://jarvis-client-beta.vercel.app)
+- **Frontend App**: [https://ai-assistant-lyart-eight.vercel.app](https://ai-assistant-lyart-eight.vercel.app)
 - **REST API (Render)**: `https://quickgpt-api.onrender.com`
 - **WS Server (Render)**: `https://quickgpt-ws.onrender.com`
 
