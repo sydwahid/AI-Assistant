@@ -79,7 +79,14 @@ print("🔊 Native PowerShell TTS enabled")
 # Socket.IO Client — connects to the ws-server
 # ═══════════════════════════════════════════════════════════════════════════
 
-WS_SERVER_URL = "http://localhost:5000"
+import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+ENV_PATH = Path(__file__).resolve().parent / ".env"
+load_dotenv(dotenv_path=ENV_PATH)
+
+WS_SERVER_URL = os.getenv("WS_SERVER_URL", "http://localhost:5000")
 
 sio = socketio.Client(
     reconnection=True,

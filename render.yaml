@@ -1,0 +1,45 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# Render Blueprint — One-click deploy for QuickGPT backend
+# Docs: https://docs.render.com/infrastructure-as-code
+# ═══════════════════════════════════════════════════════════════════════════
+
+services:
+  # ─── 1. REST API Server (Express + MongoDB) ───────────────────────────
+  - type: web
+    name: quickgpt-api
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false          # You'll set this manually in the Render dashboard
+      - key: JWT_SECRET
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        sync: false          # Your Vercel frontend URL (e.g. https://quickgpt.vercel.app)
+
+  # ─── 2. WebSocket Relay Server (Socket.IO) ────────────────────────────
+  - type: web
+    name: quickgpt-ws
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: ws-server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        sync: false          # Same Vercel frontend URL

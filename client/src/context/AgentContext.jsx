@@ -5,7 +5,8 @@ import toast from "react-hot-toast";
 const AgentContext = createContext();
 
 // Socket created ONCE outside the component tree — persists across re-renders
-const socket = io("http://localhost:5000", {
+const WS_URL = import.meta.env.VITE_WS_URL || "http://localhost:5000";
+const socket = io(WS_URL, {
     autoConnect: true,
     reconnection: true,
     reconnectionAttempts: 5,

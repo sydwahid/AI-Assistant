@@ -6,10 +6,19 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
+// Health check for Render (prevents unnecessary spin-downs)
+app.get("/health", (req, res) => res.json({ status: "ok" }));
+app.get("/", (req, res) => res.send("QuickGPT WebSocket Server is Live!"));
+
 const server = http.createServer(app);
 
+// CORS — allow Vercel frontend in production, everything in dev
+const allowedOrigins = process.env.FRONTEND_URL
+    ? [process.env.FRONTEND_URL, "http://localhost:5173"]
+    : "*";
+
 const io = new Server(server, {
-    cors: { origin: "*" }
+    cors: { origin: allowedOrigins }
 });
 
 let agentSocket = null;
@@ -33,8 +42,8 @@ io.on("connection", (socket) => {
         }
     });
 
-    // ─── NEW NLP Routing ─────────────────────────────────────
-    
+    // ─── NLP Routing ─────────────────────────────────────
+
     // 1. Frontend asks: "What intent is this text?"
     socket.on("check_intent", (text) => {
         if (agentSocket) {
@@ -62,6 +71,7 @@ io.on("connection", (socket) => {
     });
 });
 
-server.listen(5000, () => {
-    console.log("WebSocket server running on port 5000");
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+    console.log(`WebSocket server running on port ${PORT}`);
 });

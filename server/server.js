@@ -18,9 +18,15 @@ await connectDB()
 //Stripe webhooks
 app.post('/api/stripe', express.raw({ type: 'application/json' }), stripeWebhooks)
 
-//Middleware
-app.use(cors())
+//Middleware — restrict CORS in production, open in dev
+const corsOptions = process.env.FRONTEND_URL
+    ? { origin: [process.env.FRONTEND_URL, 'http://localhost:5173'], credentials: true }
+    : {}
+app.use(cors(corsOptions))
 app.use(express.json())
+
+//Health check for Render (keeps service responsive)
+app.get('/health', (req, res) => res.json({ status: 'ok' }))
 
 //Routes
 app.get('/', (req, res) => res.send('Server is Live!'))
