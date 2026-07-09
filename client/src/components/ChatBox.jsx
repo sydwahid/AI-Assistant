@@ -5,7 +5,6 @@ import { DANGER_PASSWORD } from '../agent/commands'
 import { assets } from '../assets/assets'
 import Message from './Message'
 import toast from 'react-hot-toast'
-import SplineHero from './SplineHero'
 
 const ChatBox = ({ isMenuOpen }) => {
 
@@ -260,91 +259,87 @@ const ChatBox = ({ isMenuOpen }) => {
     : selectedChat?.name || 'New Session'
 
   return (
-    <div className="flex-1 h-screen max-md:pt-14 md:h-full p-3 sm:p-4 md:p-5 lg:p-6 xl:p-8">
-      <div className="flex h-full flex-col gap-4 lg:flex-row lg:gap-6">
-        <section className={`robot-shell relative min-h-[280px] overflow-hidden lg:h-full lg:w-1/2 ${isMenuOpen ? 'max-md:hidden' : ''}`}>
-          <SplineHero />
-        </section>
-
-        <section className="robot-console flex min-h-[420px] lg:w-1/2 flex-1 flex-col overflow-hidden rounded-[2rem]">
-          <div className="flex items-center justify-between gap-4 border-b robot-divider px-5 py-4 sm:px-6">
-            <div className="min-w-0">
-              <p className="text-[11px] uppercase tracking-[0.35em] glass-text-muted">Active Console</p>
-              <h1 className="mt-1 truncate text-xl font-medium glass-text sm:text-2xl">{chatTitle}</h1>
-            </div>
-            <div className="robot-badge">
-              {micMode === 'OFF' ? 'Text Mode' : micMode === 'PASSIVE' ? 'Wake Listening' : 'Live Listening'}
-            </div>
+    <div className="flex-1 h-screen max-md:pt-14 md:h-full p-2 sm:p-3 md:p-4 lg:p-6">
+      <section className="robot-console flex h-full w-full flex-col overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+        <div className="flex items-center justify-between gap-4 border-b robot-divider px-4 py-3 sm:px-6 sm:py-4">
+          <div className="min-w-0">
+            <p className="text-[11px] uppercase tracking-[0.35em] glass-text-muted">{mode === 'image' ? 'Image Console' : 'Text Console'}</p>
+            <h1 className="mt-1 truncate text-lg font-medium glass-text sm:text-2xl">{chatTitle}</h1>
           </div>
+          <div className="robot-badge">
+            {micMode === 'OFF' ? 'Text Mode' : micMode === 'PASSIVE' ? 'Wake Listening' : 'Live Listening'}
+          </div>
+        </div>
 
-          <div ref={containerRef} className="robot-scroll flex-1 px-4 py-4 sm:px-6 sm:py-5">
-            {messages.length === 0 && (
-              <div className="glass-card rounded-[1.75rem] p-5 sm:p-6">
+        <div ref={containerRef} className="robot-scroll flex-1 px-3 py-3 sm:px-5 sm:py-4">
+          {messages.length === 0 && (
+            <div className="flex flex-col items-center justify-center py-12 sm:py-20">
+              <div className="glass-card rounded-[1.75rem] p-6 sm:p-8 text-center max-w-lg">
                 <p className="text-[11px] uppercase tracking-[0.38em] glass-text-muted">Ready</p>
-                <h2 className="mt-2 text-2xl font-light glass-text sm:text-3xl">Start a conversation with your robot copilot.</h2>
-                <p className="mt-3 max-w-xl text-sm glass-text-muted">
+                <h2 className="mt-3 text-2xl font-light glass-text sm:text-3xl">What can I help you with?</h2>
+                <p className="mt-3 text-sm glass-text-muted">
                   Ask for code help, generate ideas, or use voice mode to speak directly to Jarvis.
                 </p>
               </div>
-            )}
+            </div>
+          )}
 
-            {messages.map((message, index) => (
-              <Message key={index} message={message} />
-            ))}
+          {messages.map((message, index) => (
+            <Message key={index} message={message} />
+          ))}
 
-            {loading && (
-              <div className="loader flex items-center gap-1.5 px-2 py-3">
-                <div className="w-1.5 h-1.5 rounded-full glass-text-muted animate-bounce" style={{ background: 'currentColor' }}></div>
-                <div className="w-1.5 h-1.5 rounded-full glass-text-muted animate-bounce" style={{ background: 'currentColor' }}></div>
-                <div className="w-1.5 h-1.5 rounded-full glass-text-muted animate-bounce" style={{ background: 'currentColor' }}></div>
-              </div>
-            )}
-          </div>
+          {loading && (
+            <div className="loader flex items-center gap-1.5 px-2 py-3">
+              <div className="w-1.5 h-1.5 rounded-full glass-text-muted animate-bounce" style={{ background: 'currentColor' }}></div>
+              <div className="w-1.5 h-1.5 rounded-full glass-text-muted animate-bounce" style={{ background: 'currentColor' }}></div>
+              <div className="w-1.5 h-1.5 rounded-full glass-text-muted animate-bounce" style={{ background: 'currentColor' }}></div>
+            </div>
+          )}
+        </div>
 
-          <div className="border-t robot-divider p-3 sm:p-4">
-            {mode === 'image' && (
-              <label className='mb-3 inline-flex items-center gap-2 rounded-full border robot-divider px-4 py-2 text-sm glass-text-muted'>
-                <p className='text-xs uppercase tracking-[0.28em]'>Publish image to community</p>
-                <input type='checkbox' className='cursor-pointer accent-cyan-400' checked={isPublished} onChange={(e) => setIsPublished(e.target.checked)} />
-              </label>
-            )}
+        <div className="border-t robot-divider p-2 sm:p-4">
+          {mode === 'image' && (
+            <label className='mb-3 inline-flex items-center gap-2 rounded-full border robot-divider px-4 py-2 text-sm glass-text-muted'>
+              <p className='text-xs uppercase tracking-[0.28em]'>Publish image to community</p>
+              <input type='checkbox' className='cursor-pointer accent-cyan-400' checked={isPublished} onChange={(e) => setIsPublished(e.target.checked)} />
+            </label>
+          )}
 
-            <form onSubmit={onSubmit} className='glass-input rounded-[1.6rem] p-3 pl-4 mx-auto flex flex-wrap items-center gap-3 sm:flex-nowrap'>
-              <select onChange={(e) => setMode(e.target.value)} value={mode} className="min-w-[88px] text-sm outline-none bg-transparent glass-text">
-                <option className='bg-slate-950 text-white' value="text">Text</option>
-                <option className='bg-slate-950 text-white' value="image">Image</option>
-              </select>
-              <input
-                onChange={(e) => setPrompt(e.target.value)}
-                value={prompt}
-                type='text'
-                placeholder={micMode !== 'OFF' ? 'Listening...' : 'Send a message to Jarvis...'}
-                className='min-w-[200px] flex-1 text-sm outline-none bg-transparent glass-text placeholder:opacity-90'
-                required
-              />
+          <form onSubmit={onSubmit} className='glass-input rounded-[1.6rem] p-2.5 pl-3 sm:p-3 sm:pl-4 flex items-center gap-2 sm:gap-3'>
+            <select onChange={(e) => setMode(e.target.value)} value={mode} className="min-w-[72px] sm:min-w-[88px] text-sm outline-none bg-transparent glass-text">
+              <option className='bg-slate-950 text-white' value="text">Text</option>
+              <option className='bg-slate-950 text-white' value="image">Image</option>
+            </select>
+            <input
+              onChange={(e) => setPrompt(e.target.value)}
+              value={prompt}
+              type='text'
+              placeholder={micMode !== 'OFF' ? 'Listening...' : 'Send a message to Jarvis...'}
+              className='flex-1 min-w-0 text-sm outline-none bg-transparent glass-text placeholder:opacity-90'
+              required
+            />
 
-              <button
-                type="button"
-                onClick={toggleListening}
-                disabled={loading}
-                className={`robot-control-btn flex h-10 w-10 items-center justify-center rounded-full transition-colors active:scale-95 ${micMode === 'OFF'
-                  ? 'glass-text-muted hover:text-cyan-300'
-                  : micMode === 'PASSIVE'
-                    ? 'border-cyan-400/35 text-cyan-300 animate-[pulse_2s_ease-in-out_infinite] shadow-[0_0_20px_rgba(56,189,248,0.2)]'
-                    : 'border-cyan-300/45 text-cyan-200 animate-pulse shadow-[0_0_28px_rgba(103,232,249,0.28)]'
-                  }`}
-                title="Dictate message"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" x2="12" y1="19" y2="22" /></svg>
-              </button>
+            <button
+              type="button"
+              onClick={toggleListening}
+              disabled={loading}
+              className={`robot-control-btn flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full transition-colors active:scale-95 ${micMode === 'OFF'
+                ? 'glass-text-muted hover:text-cyan-300'
+                : micMode === 'PASSIVE'
+                  ? 'border-cyan-400/35 text-cyan-300 animate-[pulse_2s_ease-in-out_infinite] shadow-[0_0_20px_rgba(56,189,248,0.2)]'
+                  : 'border-cyan-300/45 text-cyan-200 animate-pulse shadow-[0_0_28px_rgba(103,232,249,0.28)]'
+                }`}
+              title="Dictate message"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" x2="12" y1="19" y2="22" /></svg>
+            </button>
 
-              <button disabled={loading} type="submit" className="robot-send-btn h-10 w-10 rounded-full flex items-center justify-center">
-                <img src={loading ? assets.stop_icon : assets.send_icon} alt="" className="ui-icon-on-accent h-4.5 w-4.5 opacity-95" />
-              </button>
-            </form>
-          </div>
-        </section>
-      </div>
+            <button disabled={loading} type="submit" className="robot-send-btn h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-full flex items-center justify-center">
+              <img src={loading ? assets.stop_icon : assets.send_icon} alt="" className="ui-icon-on-accent h-4 w-4 sm:h-4.5 sm:w-4.5 opacity-95" />
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
   );
 }

@@ -83,3 +83,18 @@
 2026-05-06 15:34:38,995 INFO: Added job "send_reminder" to job store "default"
 2026-05-06 15:34:38,995 INFO: Scheduler started
 2026-05-06 15:34:38,996 INFO: Background scheduler started and jobs loaded.
+2026-06-22 09:18:24,939 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-06-22 09:18:24,940 INFO: Scheduled job reminder_14_35_6077 -> 14:35 | Test from CLI
+2026-06-22 09:18:24,947 INFO: Added job "send_reminder" to job store "default"
+2026-06-22 09:18:24,948 INFO: Scheduler started
+2026-06-22 09:18:24,949 INFO: Background scheduler started and jobs loaded.
+2026-06-22 11:02:20,598 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-06-22 11:02:20,599 INFO: Scheduled job reminder_14_35_2295 -> 14:35 | Test from CLI
+2026-06-22 11:02:20,603 INFO: Added job "send_reminder" to job store "default"
+2026-06-22 11:02:20,603 INFO: Scheduler started
+2026-06-22 11:02:20,604 INFO: Background scheduler started and jobs loaded.
+2026-07-08 20:31:16,820 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-07-08 20:31:16,821 INFO: Scheduled job reminder_14_35_5560 -> 14:35 | Test from CLI
+2026-07-08 20:31:16,825 INFO: Added job "send_reminder" to job store "default"
+2026-07-08 20:31:16,825 INFO: Scheduler started
+2026-07-08 20:31:16,827 INFO: Background scheduler started and jobs loaded.
